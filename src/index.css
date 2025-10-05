@@ -16,7 +16,7 @@ main{
 }
 
 .Header{
-  width: 352px;
+  width: 380px;
   height: 165px;
   gap: 20px;
 
@@ -44,21 +44,35 @@ main{
   color: #8E8E8E;
 }
 
-.Status{
+
+.status{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  width: 352px;
-  height: 59px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  width: 360px;
+  height: 65px;
   border-radius: 4px;
-  background: #10A95B;
+  gap: 4px;
 }
 
-.Status h2{
+.gameWon{
+   background: #10A95B;
+}
+
+.gameLost{
+  background: #BA2A2A;
+}
+
+
+.WrongGuessMsg{
+  border-width: 1px;
+  border-style: dashed;
+  background: #7A5EA7;
+  border: 2px dashed #323232;
+}
+
+.status h2{
   font-family: Hanken Grotesk;
   font-weight: 500;
   font-style: Medium;
@@ -69,7 +83,7 @@ main{
 
 }
 
-.Status p{
+.status p{
     font-family: Hanken Grotesk;
     font-weight: 500;
     font-style: Medium;
@@ -105,18 +119,36 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: Hanken Grotesk;
   gap: 2px;
   width: 352px;
   flex-wrap: wrap;
   margin: 2rem;
 }
 
-.LanguageChip{
-  gap: 4.5px;
-  border-radius: 3px;
-  padding: 4.5px;
 
+span.LanguageChip {
+    border-radius: 3px;
+    padding: 4.5px;
+    position: relative;
 }
+
+/* Dimmed overlay with skull on "lost" languages */
+span.LanguageChip.lost::before {
+    content: "💀";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    font-size: 0.85rem;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
 
 
 .Word{
@@ -147,6 +179,14 @@ main{
     border-bottom: 1px solid #F9F4DA;
     margin-bottom: 2rem;
 
+}
+
+.correctLetter{
+  color: #10A95B;
+}
+
+.wrongLetter{
+  color:#BA2A2A;
 }
 
 
@@ -184,3 +224,17 @@ main{
 }
 
 
+.correctGuess{
+  background-color: #10A95B;
+
+}
+
+.wrongGuess{
+  background-color: #EC5D49;
+
+}
+
+.letterKey :disabled{
+  cursor: not-allowed;
+  opacity: 0.6;
+}
